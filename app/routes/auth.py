@@ -14,7 +14,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('main.profile'))
+            return redirect(url_for('main_bp.profile'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html')
@@ -39,7 +39,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user)
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('main_bp.profile'))
 
     return render_template('register.html')
 
@@ -47,4 +47,4 @@ def register():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main_bp.index'))

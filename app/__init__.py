@@ -14,7 +14,7 @@ login_manager = LoginManager()
 def create_app(config_class=Config):
     app = Flask(__name__)
     # Konfigurasi aplikasi
-    app.config['UPLOAD_FOLDER'] = 'app/static'
+    app.config['UPLOAD_FOLDER'] = 'app/static/uploads'
     app.config['SECRET_KEY'] = 'mysecret'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gallery.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

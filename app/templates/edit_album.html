@@ -1,0 +1,26 @@
+<!-- filepath: /home/sukardi/Documents/soal ukk/fotogalery/app/templates/edit_album.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Album</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Album</h2>
+        <form method="POST" action="{{ url_for('album_bp.edit_album', album_id=album.id) }}">
+            <div class="form-group">
+                <label for="name">Album Name:</label>
+                <input type="text" id="name" name="name" value="{{ album.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description">{{ album.description }}</textarea>
+            </div>
+            <button type="submit">Update Album</button>
+        </form>
+    </div>
+</body>
+</html>
