@@ -44,3 +44,13 @@ def edit_task(task_id):
             return redirect(url_for("main_bp.index"))
         return render_template("edit_task.html", task=task)
     return redirect(url_for("main_bp.index"))
+
+
+@main_bp.route("/done/<int:task_id>")
+@login_required
+def mark_done(task_id):
+    task = Task.query.get(task_id)
+    if task and task.user_id == current_user.id:  # Ensure the task belongs to the current user
+        task.done = not task.done  # Toggle the done status
+        db.session.commit()
+    return redirect(url_for("main_bp.index"))
