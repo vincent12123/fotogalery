@@ -91,7 +91,7 @@
                                 <span class="text-sm">{{ task.date }}</span>
                             </div>
                             <div class="flex space-x-3">
-                                <button onclick="location.href='/done/{{ task.id }}'" 
+                                <button onclick="location.href='{{ url_for('main_bp.mark_done', task_id=task.id) }}'" 
                                     class="p-2 rounded-full hover:bg-gray-100 transition-colors">
                                     <i class="fas fa-check {{ 'text-green-600' if task.done else 'text-gray-400' }}"></i>
                                 </button>
